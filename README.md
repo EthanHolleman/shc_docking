@@ -416,9 +416,9 @@ There is no molecular modeling or ligand docking program that can be used solely
 
 Overall, the RTX drugs both seemed to show preference for the "hole" near residue 71 of the 1OY2 shc structure when accessing by the combined metric. It cannot be ignored though that changing the metric you evaluate by can make this association less cut-and-dry. Differences in binding locations of ligands when accessing interface delta X or total score may be driven by poses that increase overall complex stability but force specific residues into more unfavorable conformations comparatively decreasing total score.
 
-Given the localization of the NPEYp peptide to this same hole when docked to the 1OY2 structure and evaluated by interface delta X and the combined metric there is preliminary evidence to suggest that the RTX drugs may be acting competitively, increasing insulin sensitivity by sterically blocking access to this site. Additionaly, the RTX drugs localizing to this site do so with ~2x the affinity (as measured by interface delta X) which points towards the potential of these drugs to out-compete NPEYp for binding to Shc at this specific site. 
+Given the localization of the NPEYp peptide to this same hole when docked to the 1OY2 structure and evaluated by interface delta X and the combined metric there is preliminary evidence to suggest that the RTX drugs may be acting competitively, increasing insulin sensitivity by sterically blocking access to this site. Additionally, the RTX drugs localizing to this site do so with ~2x the affinity (as measured by interface delta X) which points towards the potential of these drugs to out-compete NPEYp for binding to Shc at this specific site. 
 
-While writing this I realized it would be benefical to also dock the ligand with the least affinity for Shc. This would help access if the pocket near residue 71 is actually showing specificity for both NPEYp and the RTX ligands or if there is something about this pocket that allows Rosetta to find "something for everyone".
+While writing this I realized it would be beneficial to also dock the ligand with the least affinity for Shc. This would help access if the pocket near residue 71 is actually showing specificity for both NPEYp and the RTX ligands or if there is something about this pocket that allows Rosetta to find "something for everyone".
 
 
 
