@@ -110,7 +110,7 @@ These data points can be added to aggregated score files using the [extend_agg_f
 
 While not strictly required for the analysis you can use the [energy_well.r](https://gist.github.com/EthanHolleman/a7aaaf41926cb5f13ab32c62b79d9fc0) R script in order to create plots that compare distance to the PTB domain (or whatever location is specified when running [extend_agg_file.r](https://gist.github.com/EthanHolleman/fadebd0273c923a243c3315203a2f711)) to total score and interface delta X of all, or a subset of the simulations. An example plot selecting for the top 15% of results is shown below.
 
-![](images/energy_well_example.png)
+![](notebook/images/energy_well_example.png)
 
 ## Identify best poses
 
@@ -123,7 +123,7 @@ Two primary metrics where used to access to docking quality of a specific pose.
 
 In order to balance out the two metrics I also assessed poses using a combined metric which considered both interface delta X and total score. This is because I saw a non-zero number of cases where one metric would be very low and the other very high or vice versa.
 
-![](images/combined_seq.png)
+![](notebook/images/combined_seq.png)
 
 Where
 
@@ -180,7 +180,7 @@ RTX60933293 was docked into a repacked version of `1OY2` (`Shc1-PTB_1OY2_0061.pd
 
 Eight of the top ten ligands localize in a "hole" near residue 76 when ranked by total score.
 
-![](images/RTX60933293_ts.png)
+![](notebook/images/RTX60933293_ts.png)
 
 ### Best poses by interface delta X
 
@@ -201,11 +201,11 @@ Eight of the top ten ligands localize in a "hole" near residue 76 when ranked by
 
 When ranking poses by interface delta X, ligands cluster to a pocket on the other side of the protein, in closer proximity to the beta sheet.
 
-![](images/RTX60933293_id.png)
+![](notebook/images/RTX60933293_id.png)
 
 However, when using the combined metric, all of these poses disappear from the top 10, indicating while the interface delta X was low, the total score was high.
 
-![](images/RTX60933293_c.png)
+![](notebook/images/RTX60933293_c.png)
 
 ## RTX73145433
 
@@ -232,7 +232,7 @@ The csv version of this table is available [from this link](https://github.com/E
 
 In general, when accessing ligands by total score, there is extremely strong preference for a "hole" hear residue 76.
 
-![](images/RTX73145433_ts.png)
+![](notebook/images/RTX73145433_ts.png)
 
 ### Best poses by interface delta x
 
@@ -255,17 +255,17 @@ The csv version of this table is available [from this link](https://github.com/E
 
 When accessing the best poses by lowest interface delta X ligands tend to cluster on the opposite side of Shc (comapred to clustering as measured by total score)
 
-![](images/RTX73145433_idx.png)
+![](notebook/images/RTX73145433_idx.png)
 
 However, some of these poses have very high total scores including some with positive values, while none of the best ligands as ranked by total score had a positive interface delta X.
 
 When accessing using the combined metric, ligands generally look like those scored using only total score. This is shown in the figure below.
 
-![](images/RTX73145433_c.png)
+![](notebook/images/RTX73145433_c.png)
 
 ## NPEYp Docking
 
-The NPEYp region of the insulin receptor was docked into the 1OY2 receptor using a random starting position and a library of 100 most likely NPEYp conformers generated using BCL. A total of 17695 simulations where completed.  
+The NPEYp region of the insulin receptor was docked into the 1OY2 receptor using a random starting position and a library of 100 most likely NPEYp conformers generated using BCL. A total of 17695 simulations where completed. The purpose of these simulations was to try and determine possible locations for NPEYp binding and use these locations to access if the Shc inhibiting drugs may be acting competitively or allosterically.    
 
 ### Best poses by total score
 
@@ -285,7 +285,7 @@ The NPEYp region of the insulin receptor was docked into the 1OY2 receptor using
 [Link to PyMol session](https://github.com/EthanHolleman/shc_docking/blob/main/data/NPEYp/best_poses_pymol/total_score/top_10.pse)
 
 
-![](images/NPEYp_total_score.png)
+![](notebook/images/NPEYp_total_score.png)
 
 
 
@@ -307,7 +307,7 @@ When measuring only by total score, NPEYp top 10 poses where some of the least s
 | Shc1-PTB_1OY2_0061_NPEYp_0613.pdb | -10.188           |
 
 
-![](images/NPEYp_interface_delta.png)
+![](notebook/images/NPEYp_interface_delta.png)
 
 In contrast to the results of NPEYp docking when ranking by total score, ranking by interface delta X showed basically opposite results with peptides tightly clustering around the "hole" both RTX drugs had shown preference for at least one metric. This could be indicating that the most stabilizing complexes of Shc-NPEYp occur at this interface.
 
@@ -315,9 +315,53 @@ In contrast to the results of NPEYp docking when ranking by total score, ranking
 
 [Link to PyMol Session](https://github.com/EthanHolleman/shc_docking/blob/main/data/NPEYp/best_poses_pymol/interface_delta_x/top_10.pse)
 
-![](images/NPEYp_c.png)
+![](notebook/images/NPEYp_c.png)
 
 Results when using the combined metric were much more similar to docking poses when ranking by interface delta X. This implies that overall stability of these structures were similar to best structures when ranked only by total score but with better interface delta X values.
+
+## Trka to 1OY2 docking
+
+The Trka peptide was docked into the same 1OY2 Shc structure used in the simulations above. A total of 12477 simulations where ran and evaluated.
+
+### Best poses by total score
+
+| Filename                         | Total Score |
+|----------------------------------|-------------|
+| Shc1-PTB_1OY2_0061_trka_0007.pdb | -167.695    |
+| Shc1-PTB_1OY2_0061_trka_0288.pdb | -166.184    |
+| Shc1-PTB_1OY2_0061_trka_0124.pdb | -163.624    |
+| Shc1-PTB_1OY2_0061_trka_0200.pdb | -163.604    |
+| Shc1-PTB_1OY2_0061_trka_0105.pdb | -163.25     |
+| Shc1-PTB_1OY2_0061_trka_0183.pdb | -163.127    |
+| Shc1-PTB_1OY2_0061_trka_0003.pdb | -162.872    |
+| Shc1-PTB_1OY2_0061_trka_0172.pdb | -162.239    |
+| Shc1-PTB_1OY2_0061_trka_0236.pdb | -161.053    |
+| Shc1-PTB_1OY2_0061_trka_0094.pdb | -160.684    |
+
+![](notebook/images/Trka_10ys_ts.png)
+
+[Link to PyMol Session](https://github.com/EthanHolleman/shc_docking/blob/main/data/Trka_1OY2/best_poses_pymol/total_score/top_10.pse)
+
+Docking by total score showed high degree of clustering to the same binding pocket NPEYp favored when evaluated by total score (and partly interface delta X).
+
+### Best poses by interface delta X
+
+| Filename                         | Interface Delta X |
+|----------------------------------|-------------------|
+| Shc1-PTB_1OY2_0061_trka_0051.pdb | -15.562           |
+| Shc1-PTB_1OY2_0061_trka_0066.pdb | -13.215           |
+| Shc1-PTB_1OY2_0061_trka_0281.pdb | -13.002           |
+| Shc1-PTB_1OY2_0061_trka_0303.pdb | -12.916           |
+| Shc1-PTB_1OY2_0061_trka_0162.pdb | -12.846           |
+| Shc1-PTB_1OY2_0061_trka_0095.pdb | -12.444           |
+| Shc1-PTB_1OY2_0061_trka_0249.pdb | -12.301           |
+| Shc1-PTB_1OY2_0061_trka_0004.pdb | -12.251           |
+| Shc1-PTB_1OY2_0061_trka_0104.pdb | -12.218           |
+| Shc1-PTB_1OY2_0061_trka_0087.pdb | -12.165           |
+
+![](notebook/images/Trka_10ys_id.png)
+
+[Link to PyMol Session](https://github.com/EthanHolleman/shc_docking/blob/main/data/Trka_1OY2/best_poses_pymol/interface_delta_x/top_10.pse)
 
 ## Trka to 1Shc peptide docking
 
@@ -343,7 +387,7 @@ Generally, when measuring by total score the Trka peptide docked in close proxim
 
 [Link to PyMol Session](https://github.com/EthanHolleman/shc_docking/blob/main/data/Trka_1shc/best_poses_pymol/total_score/top_10.pse)
 
-![](images/1shc_total_score.png)
+![](notebook/images/1shc_total_score.png)
 
 ### Best poses by interface delta X
 
@@ -364,4 +408,20 @@ However, this was not the case when measuring by interface delta X, with Rosetta
 
 [Link to Pymol Session](https://github.com/EthanHolleman/shc_docking/blob/main/data/Trka_1shc/best_poses_pymol/interface_delta_x/top_10.pse)
 
-![](images/1shc_interface_delta_x.png)
+![](notebook/images/1shc_interface_delta_x.png)
+
+# Discussion
+
+There is no molecular modeling or ligand docking program that can be used solely to draw biological conclusions in the absence of additional experimental data, so the best we can do here is attempt to make sense of a potentially noisy dataset of ligand poses. 
+
+Overall, the RTX drugs both seemed to show preference for the "hole" near residue 71 of the 1OY2 shc structure when accessing by the combined metric. It cannot be ignored though that changing the metric you evaluate by can make this association less cut-and-dry. Differences in binding locations of ligands when accessing interface delta X or total score may be driven by poses that increase overall complex stability but force specific residues into more unfavorable conformations comparatively decreasing total score.
+
+Given the localization of the NPEYp peptide to this same hole when docked to the 1OY2 structure and evaluated by interface delta X and the combined metric there is preliminary evidence to suggest that the RTX drugs may be acting competitively, increasing insulin sensitivity by sterically blocking access to this site. Additionaly, the RTX drugs localizing to this site do so with ~2x the affinity (as measured by interface delta X) which points towards the potential of these drugs to out-compete NPEYp for binding to Shc at this specific site. 
+
+While writing this I realized it would be benefical to also dock the ligand with the least affinity for Shc. This would help access if the pocket near residue 71 is actually showing specificity for both NPEYp and the RTX ligands or if there is something about this pocket that allows Rosetta to find "something for everyone".
+
+
+
+
+
+
